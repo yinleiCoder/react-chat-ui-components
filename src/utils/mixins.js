@@ -34,3 +34,10 @@ export const activeBar = ({barWidth='8px', shadowWidth = "20px"} = {}) => css`
                 opacity: 0.6;
         }
 `;
+
+export const card = (radius = '14px', padding="20px 30px") => css`
+        padding: ${padding};
+        background: ${({theme}) => theme.background};
+        border-radius: ${radius};
+        box-shadow: 0px 18px 40px 0px rgba(0,0,0,0.04);
+`;
