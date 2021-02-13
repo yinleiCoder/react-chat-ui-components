@@ -16,19 +16,49 @@ import photo2 from 'assets/images/photo2.jpg'
 import photo3 from 'assets/images/photo3.jpg'
 
 import { ReactComponent as Cross } from 'assets/icon/cross.svg'
-function Profile({children, ...rest}) {
+import Button from 'components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+function Profile({
+    showEditBtn,
+    showCloseIcon = true,
+    onEdit,
+    status,
+    children,
+    ...rest
+}) {
     return (
         <StyledProfile {...rest}>
-            <CloseIcon icon={Cross}/>
+            {showCloseIcon && <CloseIcon icon={Cross}/>}
             <Avatar 
                 css={`
                     margin: 26px 0;
+                    grid-area: 1 / 1 / 3 / 2;
                 `}
                 src={face}
                 size='160px'
-                status='online'
+                status={status}
                 statusIconSize='25px'
             />
+            {
+                showEditBtn && (
+                    <Button 
+                    css={`
+                        grid-area: 1 / 1 / 3 / 2;
+                        align-self: end;
+                        margin-left: 100px !important;
+                        z-index: 10;
+                    `}
+                    size="52px" onClick={onEdit}>
+                        <FontAwesomeIcon 
+                            css={`
+                                font-size: 24px;
+                            `}
+                            icon={faPen}
+                        />
+                    </Button>
+                )
+            }
             <Paragraph
                 size="xlarge"
                 css={`
