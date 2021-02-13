@@ -1,0 +1,32 @@
+import ChatBubble from 'components/ChatBubble';
+import styled from 'styled-components';
+
+const Conversations = styled.div`
+    flex: 1;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    overflow-y: auto;
+    & > * {
+        margin: 10px 0 !important;
+    }
+`;
+
+const MyChatBubble = styled(ChatBubble).attrs({type: 'mine'})`
+    align-self: flex-end;
+`;
+
+const StyledConversation = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: 1px solid ${({theme}) => theme.gray4};
+    & > *:last-child {
+        align-self: end;
+    }
+`;
+
+export default StyledConversation;
+export { Conversations, MyChatBubble};
