@@ -9,11 +9,13 @@ import {ReactComponent  as closeCircle} from 'assets/icon/closeCircle.svg';
 import face from 'assets/images/avatar.jpg'
 
 import 'styled-components/macro';
+import { useHistory } from 'react-router-dom';
 function BlockedList({children, ...rest}) {
+    const history = useHistory();
     return (
         <StyledBlockedList {...rest}>
             <SettingsMenu>
-                <Icon icon={ArrowMenuLeft} css={`cursor: pointer;`}/>
+                <Icon icon={ArrowMenuLeft} css={`cursor: pointer;`} onClick={() => history.goBack()}/>
                 <Text size="xxlarge">已屏蔽的好友</Text>
             </SettingsMenu>
             <FriendList>

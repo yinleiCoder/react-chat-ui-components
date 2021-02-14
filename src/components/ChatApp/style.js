@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 
 const Nav = styled.div`
@@ -17,6 +17,8 @@ const Content = styled.main`
 `;
 const Drawer = styled.div`
     max-width: 350px;
+    width: 0;
+    ${({show}) => show && css`width: 350px;`}
 `;
 
 const StyledChatApp = styled.div`

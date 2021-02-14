@@ -11,10 +11,10 @@ import {ReactComponent as Camera} from 'assets/icon/camera.svg'
 import {ReactComponent as Options} from 'assets/icon/options.svg'
 import DropDown from 'components/DropDown';
 import { DropdownItem } from 'components/DropDown/style';
-function TitleBar({children, ...rest}) {
+function TitleBar({onAvatarClick,onVideoClicked, children, ...rest}) {
     return (
         <StyledTitleBar {...rest}>
-            <Avatar status="offline" src={face}/>
+            <Avatar onClick={onAvatarClick} status="offline" src={face}/>
             <Title>
                 <Paragraph size="large">张明</Paragraph>
                 <Paragraph type="secondary">
@@ -23,7 +23,7 @@ function TitleBar({children, ...rest}) {
                 </Paragraph>
             </Title>
             <Actions>
-                <Icon opacity={0.3} icon={Call}/>
+                <Icon opacity={0.3} icon={Call} onClick={onVideoClicked}/>
                 <Icon opacity={0.3} icon={Camera}/>
                 <DropDown content={
                     <> 
