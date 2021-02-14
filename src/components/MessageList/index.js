@@ -11,8 +11,11 @@ import face1 from 'assets/images/avatar.jpg';
 import { ReactComponent as Plus } from 'assets/icon/plus.svg'
 import Icon from 'components/Icon';
 import FilterList from 'components/FilterList';
+import { useTrail, animated } from 'react-spring';
+import useStaggeredList from 'hooks/usetaggeredList';
 
 function MessageList({children, ...rest}) {
+    const trailAnimes = useStaggeredList(6);
     return (
         <StyledMessageList {...rest}>
             <FilterList
@@ -23,18 +26,20 @@ function MessageList({children, ...rest}) {
                 <ChatFilter /> */}
                 <ChatList>
                     {[1,2,3,4,5,6].map((_, index) => (
-                        <MessageCard 
-                            active={index%3===0}
-                            key={index}
-                            avatarSrc={face1}
-                            name="尹磊"
-                            avatarStatus="online"
-                            statusText="在线"
-                            time="2小时前"
-                            message="你要喜欢有结果的树。"
-                            unreadCount={2}
-                            replied={index%3===0}
-                        />
+                        <animated.div key={index} style={trailAnimes[index]}>
+                            <MessageCard 
+                                active={index%3===0}
+                                key={index}
+                                avatarSrc={face1}
+                                name="尹磊"
+                                avatarStatus="online"
+                                statusText="在线"
+                                time="2小时前"
+                                message="你要喜欢有结果的树。"
+                                unreadCount={2}
+                                replied={index%3===0}
+                            />
+                        </animated.div>
                     ))}
                 </ChatList>
             </FilterList>

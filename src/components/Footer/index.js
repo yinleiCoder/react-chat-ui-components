@@ -15,11 +15,11 @@ import Emoji from 'components/Emoji';
 import Popover from 'components/Popover';
 import { useTheme } from 'styled-components';
 
-function Footer({children, ...rest}) {
+function Footer({animeProps, style, children, ...rest}) {
     const [emojiIconActive, setEmojiIconActive] = useState(false);
     const theme = useTheme();
     return (
-        <StyledFooter {...rest}>
+        <StyledFooter style={{...style, ...animeProps}} {...rest}>
             <Input 
                 placeholder="输入想和对方说的话"
                 prefix={<Icon icon={ClipIcon}/>}

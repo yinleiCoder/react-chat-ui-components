@@ -11,9 +11,9 @@ import {ReactComponent as Camera} from 'assets/icon/camera.svg'
 import {ReactComponent as Options} from 'assets/icon/options.svg'
 import DropDown from 'components/DropDown';
 import { DropdownItem } from 'components/DropDown/style';
-function TitleBar({onAvatarClick,onVideoClicked, children, ...rest}) {
+function TitleBar({animeProps,style,onAvatarClick,onVideoClicked, children, ...rest}) {
     return (
-        <StyledTitleBar {...rest}>
+        <StyledTitleBar style={{...style, ...animeProps}} {...rest}>
             <Avatar onClick={onAvatarClick} status="offline" src={face}/>
             <Title>
                 <Paragraph size="large">张明</Paragraph>
