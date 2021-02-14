@@ -10,28 +10,34 @@ import MessageCard from 'components/MessageCard';
 import face1 from 'assets/images/avatar.jpg';
 import { ReactComponent as Plus } from 'assets/icon/plus.svg'
 import Icon from 'components/Icon';
+import FilterList from 'components/FilterList';
 
 function MessageList({children, ...rest}) {
     return (
         <StyledMessageList {...rest}>
-            <Input.Search />
-            <ChatFilter />
-            <ChatList>
-                {[1,2,3,4,5,6].map((_, index) => (
-                    <MessageCard 
-                        active={index%3===0}
-                        key={index}
-                        avatarSrc={face1}
-                        name="尹磊"
-                        avatarStatus="online"
-                        statusText="在线"
-                        time="2小时前"
-                        message="你要喜欢有结果的树。"
-                        unreadCount={2}
-                        replied={index%3===0}
-                    />
-                ))}
-            </ChatList>
+            <FilterList
+                options={['最新消息优先', '在线好友优先']}
+                actionLabel="创建会话"
+            >
+                {/* <Input.Search />
+                <ChatFilter /> */}
+                <ChatList>
+                    {[1,2,3,4,5,6].map((_, index) => (
+                        <MessageCard 
+                            active={index%3===0}
+                            key={index}
+                            avatarSrc={face1}
+                            name="尹磊"
+                            avatarStatus="online"
+                            statusText="在线"
+                            time="2小时前"
+                            message="你要喜欢有结果的树。"
+                            unreadCount={2}
+                            replied={index%3===0}
+                        />
+                    ))}
+                </ChatList>
+            </FilterList>
         </StyledMessageList>
     );
 }
