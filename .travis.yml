@@ -1,11 +1,7 @@
 language: node_js
 node_js:
   - "stable"
-install:
-  - npm install --force
-cache:
-  directories:
-    - node_modules
+
 env:
   - CI=true
 script: 
