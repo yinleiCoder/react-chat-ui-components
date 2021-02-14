@@ -9,6 +9,8 @@ import face from 'assets/images/zhangming.jpg'
 import {ReactComponent as Call} from 'assets/icon/call.svg'
 import {ReactComponent as Camera} from 'assets/icon/camera.svg'
 import {ReactComponent as Options} from 'assets/icon/options.svg'
+import DropDown from 'components/DropDown';
+import { DropdownItem } from 'components/DropDown/style';
 function TitleBar({children, ...rest}) {
     return (
         <StyledTitleBar {...rest}>
@@ -23,7 +25,21 @@ function TitleBar({children, ...rest}) {
             <Actions>
                 <Icon opacity={0.3} icon={Call}/>
                 <Icon opacity={0.3} icon={Camera}/>
-                <Icon opacity={0.3} icon={Options}/>
+                <DropDown content={
+                    <> 
+                    <DropdownItem>
+                        <Paragraph>个人资料</Paragraph>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Paragraph>关闭会话</Paragraph>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Paragraph type='danger'>屏蔽此人</Paragraph>
+                    </DropdownItem>
+                </>
+                }>
+                    <Icon opacity={0.3} icon={Options}/>
+                </DropDown>
             </Actions>
         </StyledTitleBar>
     );
